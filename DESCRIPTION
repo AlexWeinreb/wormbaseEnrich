@@ -12,3 +12,5 @@ Imports:
     ggplot2,
     reticulate
 RoxygenNote: 7.2.3
+URL: https://github.com/AlexWeinreb/wormbaseEnrich
+BugReports: https://github.com/AlexWeinreb/wormbaseEnrich/issues
