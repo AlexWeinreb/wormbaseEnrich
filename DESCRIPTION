@@ -1,0 +1,14 @@
+Package: wormbaseEnrich
+Type: Package
+Title: Wormbase Tissue Enrichment Analysis
+Version: 0.2.0
+Authors@R: person("Weinreb","Alexis", email = "alexis.weinreb@yale.edu", role = c("aut", "cre"))
+Maintainer: Alexis Weinreb <alexis.weinreb@yale.edu>
+Description: Wrap the Tissue Enrichment Analysis Python package, written by David Angeles-Albores/Wormbase.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    ggplot2,
+    reticulate
+RoxygenNote: 7.2.3
