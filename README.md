@@ -24,5 +24,36 @@ note that you can select a Python virtual environment beforehand if you wish the
 
 # Usage
 
+Assuming we want to use a virtualenv named `'r-tea'`, we can first perform the installation:
+
+```r
+# reticulate::virtualenv_remove('r-tea')
+# reticulate::virtualenv_create('r-tea')
+reticulate::use_virtualenv('r-tea')
+wormbaseEnrich::install_tea()
+```
+
+If the installation was done previously, in a new session we can call
+```r
+reticulate::use_virtualenv('r-tea')
+library(wormbaseEnrich)
+
+tea <- reticulate::import("tissue_enrichment_analysis", delay_load = TRUE, convert = FALSE)
+```
+
+We can fetch one or several dictionaries from Wormbase:
+
+```r
+my_tissue_dict <- fetch_dictionary("tissue")
+```
+
+And them use it:
+```r
+
+
+df <- enrichment_analysis(xx, my_tissue_dict)
+```
+
+
 
 
