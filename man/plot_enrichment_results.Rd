@@ -4,21 +4,14 @@
 \alias{plot_enrichment_results}
 \title{A plot function for TEA.}
 \usage{
-plot_enrichment_results(
-  df,
-  labels_on_columns = NULL,
-  n_bars = 15L,
-  filename = NULL
-)
+plot_enrichment_results(df, labels_inside_columns = NULL, max_bars = 15L)
 }
 \arguments{
 \item{df}{dataframe as output by `enrichment_analysis()`.}
 
-\item{labels_on_columns}{write the labels on top of the bars, instead of on the side. Leave NULL for automatic selection.}
+\item{labels_inside_columns}{write the labels on top of the bars, instead of on the side. Leave NULL for automatic selection.}
 
-\item{n_bars}{maximal number of bars to be shown.}
-
-\item{filename}{if not NULL, file name to save the plot as png.}
+\item{max_bars}{maximal number of bars to be shown.}
 }
 \value{
 a ggplot object

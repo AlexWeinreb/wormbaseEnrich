@@ -1,7 +1,7 @@
 Package: wormbaseEnrich
 Type: Package
 Title: Wormbase Tissue Enrichment Analysis
-Version: 0.3.0
+Version: 1.0.0
 Authors@R: person("Weinreb","Alexis", email = "alexis.weinreb@yale.edu", role = c("aut", "cre"))
 Maintainer: Alexis Weinreb <alexis.weinreb@yale.edu>
 Description: Call the Wormbase Tissue Enrichment Analysis tool. This is an R reimplementation of
@@ -11,8 +11,13 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     ggplot2,
-    tidyr
-    tibble
-RoxygenNote: 7.2.3
+    stats,
+    tibble,
+    utils
+RoxygenNote: 7.3.1
 URL: https://github.com/AlexWeinreb/wormbaseEnrich
 BugReports: https://github.com/AlexWeinreb/wormbaseEnrich/issues
+Suggests: 
+    readr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

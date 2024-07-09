@@ -25,7 +25,7 @@ fetch_dictionary <- function(analysis = c("tissue", "phenotype", "go")) {
     "go" = "go_dict.csv"
   )
 
-  read.csv(paste0(url_base, filename), check.names = FALSE)
+  utils::read.csv(paste0(url_base, filename), check.names = FALSE)
 
 }
 

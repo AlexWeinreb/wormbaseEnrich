@@ -2,6 +2,5 @@
 
 export(enrichment_analysis)
 export(fetch_dictionary)
-export(install_tea)
 export(plot_enrichment_results)
 import(ggplot2)

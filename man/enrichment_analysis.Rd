@@ -4,16 +4,21 @@
 \alias{enrichment_analysis}
 \title{Execute complete enrichment analysis (hypergeometric test, BH correction).}
 \usage{
-enrichment_analysis(gene_list, tissue_df, alpha = 0.05, filename = NULL)
+enrichment_analysis(
+  gene_list,
+  dictionary,
+  alpha = 0.05,
+  background_genes = NULL
+)
 }
 \arguments{
-\item{gene_list}{a list of non-redundant Wormbase IDs.}
-
-\item{alpha}{significance threshold, defaults to 0.05.}
-
-\item{filename}{if not NULL, file name to save results as a csv.}
+\item{gene_list}{a list of Wormbase IDs.}
 
 \item{dictionary}{dictionary created with `fetch_dictionary()`.}
+
+\item{alpha}{significance threshold.}
+
+\item{background_genes}{list of background genes}
 }
 \value{
 a data.frame containing significantly enriched tissues

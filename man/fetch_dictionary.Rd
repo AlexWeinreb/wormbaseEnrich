@@ -7,13 +7,11 @@
 fetch_dictionary(analysis = c("tissue", "phenotype", "go"))
 }
 \arguments{
-\item{analysis}{the type of analysis (tissue, phenotype, Gene Ontology)}
+\item{analysis}{the type of analysis (tissue, phenotype, go)}
+}
+\value{
+A data.frame containing the dictionary of interest, one row per gene, one column per term
 }
 \description{
-If `analysis` isn't specified, fetches the tissue dictionary.
+Download a dictionary file from Wormbase
 }
-\section{Output}{
-
-A dataframe containing the dictionary of interest
-}
-
