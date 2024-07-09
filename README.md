@@ -171,15 +171,3 @@ res_py
 Note how the Q value differs but other values identical.
 
 
-
-```r
-
-bg = pd.read_csv(args.background, header=None, names=['wbid'])
-dictionary = dictionary[dictionary.wbid.isin(bg.wbid)]
-        
-res_py <- tea$enrichment_analysis(
-    gene_list = gene_list,
-    tissue_df = my_tissue_dict_py,
-    background = ""
-  )
-```
