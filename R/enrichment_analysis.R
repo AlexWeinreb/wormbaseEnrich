@@ -116,7 +116,7 @@ enrichment_analysis <- function(gene_list, dictionary, alpha = 0.05, background_
 
   res$FDR <- stats::p.adjust(res$p_value, method = "BH")
 
-  res <- res[res$FDR <= alpha & res$observed > 0, ]
+  res <- res[res$FDR <= alpha & res$observed > 0 & res$enrichment_fc > 1, ]
 
   res[order(res$enrichment_fc, decreasing = TRUE),]
 }

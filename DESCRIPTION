@@ -1,7 +1,7 @@
 Package: wormbaseEnrich
 Type: Package
 Title: Wormbase Tissue Enrichment Analysis
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: person("Weinreb","Alexis", email = "alexis.weinreb@yale.edu", role = c("aut", "cre"))
 Maintainer: Alexis Weinreb <alexis.weinreb@yale.edu>
 Description: Call the Wormbase Tissue Enrichment Analysis tool. This is an R reimplementation of
