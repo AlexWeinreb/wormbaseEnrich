@@ -194,4 +194,32 @@ test_that("GO enrichment as expected",{
 
 
 
+test_that("Genes not in dict properly ignored",{
+
+
+
+  res_correct <- enrichment_analysis(gene_list, dict_tissue)
+
+  res_not_in_list <- suppressWarnings( enrichment_analysis(gene_list |> c("not_in_list"),
+                                                           dict_tissue) )
+
+  expect_identical(res_correct, res_not_in_list)
+
+
+  res_correct <- enrichment_analysis(gene_list,
+                                     dict_tissue,
+                                     background_genes = background_list)
+
+  res_not_in_list <- suppressWarnings(enrichment_analysis(gene_list |> c("not_in_list"),
+                                                          dict_tissue,
+                                                          background_genes = background_list) )
+
+  res_not_in_list2 <- suppressWarnings(enrichment_analysis(gene_list |> c("not_in_list"),
+                                                           dict_tissue,
+                                                           background_genes = background_list |> c("not_in_list2")) )
+
+  expect_identical(res_correct, res_not_in_list)
+  expect_identical(res_correct, res_not_in_list2)
+
+})
 

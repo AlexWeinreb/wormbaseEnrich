@@ -37,7 +37,7 @@ enrichment_analysis <- function(gene_list, dictionary, alpha = 0.05, background_
             " gene ID(s) not found in dictionary, will be ignored: ",
             paste0(utils::head(ids_not_found), collapse = ", "))
 
-    gene_list <- setdiff(background_genes, ids_not_found)
+    gene_list <- setdiff(gene_list, ids_not_found)
   }
 
 
