@@ -8,7 +8,8 @@ enrichment_analysis(
   gene_list,
   dictionary,
   alpha = 0.05,
-  background_genes = NULL
+  background_genes = NULL,
+  filter = TRUE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ enrichment_analysis(
 \item{alpha}{significance threshold.}
 
 \item{background_genes}{list of background genes}
+
+\item{filter}{if TRUE, filters results before returning (mimicking the Python package). Set to FALSE to perform additional FDR corrections.}
 }
 \value{
 a data.frame containing significantly enriched tissues

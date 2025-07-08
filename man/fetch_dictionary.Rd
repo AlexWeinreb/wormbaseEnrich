@@ -4,14 +4,43 @@
 \alias{fetch_dictionary}
 \title{Fetch a dictionary}
 \usage{
-fetch_dictionary(analysis = c("tissue", "phenotype", "go"))
+fetch_dictionary(
+  analysis = c("tissue", "phenotype", "go"),
+  cache = 2L,
+  cache_dir = NULL
+)
 }
 \arguments{
-\item{analysis}{the type of analysis (tissue, phenotype, go)}
+\item{analysis}{the type of analysis (tissue, phenotype, go).}
+
+\item{cache}{If a number, only download the dictionary after this many days.}
+
+\item{cache_dir}{Specify a cache directory.
+
+# Caching
+
+Since the Wormbase annotations change relatively rarely, it may be not be desirable
+to download the dictionary after every session refresh. Instead, on the first call to
+this function, the dictionary is downloaded and cached (saved to disk). Subsequent
+calls to this function first attempt to read a cached file.
+
+
+If `cache = FALSE` or `cache = 0`, the dictionary is downloaded, saved in `cache_dir`, and returned.
+If `cache` is a (positive) number, the content of `cache_dir` is examined, and if
+a file less than `cache` days is found, it is read and returned. If a file older than `cache` days
+is found, a new dictionary is downloaded and overwrites the existing one.
+
+To keep an analysis reproducible on the long term, set `cache = Inf` and a local (version-controlled) `cache_dir`.
+
+## Cache directory
+
+If `cache_dir` is a character, it is taken as the path to a directory to use for caching. Otherwise,
+if the option `WBenrich_cache_dir` is set, it is used as cache directory. Otherwise,
+the cache directory is chosen by `rappdirs`.}
 }
 \value{
 A data.frame containing the dictionary of interest, one row per gene, one column per term
 }
 \description{
-Download a dictionary file from Wormbase
+Load a dictionary file from Wormbase
 }

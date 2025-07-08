@@ -5,12 +5,13 @@
 #' @param dictionary dictionary created with `fetch_dictionary()`.
 #' @param alpha significance threshold.
 #' @param background_genes list of background genes
+#' @param filter if TRUE, filters results before returning (mimicking the Python package). Set to FALSE to perform additional FDR corrections.
 #'
 #'
 #' @returns a data.frame containing significantly enriched tissues
 #'
 #' @export
-enrichment_analysis <- function(gene_list, dictionary, alpha = 0.05, background_genes = NULL) {
+enrichment_analysis <- function(gene_list, dictionary, alpha = 0.05, background_genes = NULL, filter = TRUE) {
 
 
 
@@ -116,9 +117,16 @@ enrichment_analysis <- function(gene_list, dictionary, alpha = 0.05, background_
 
   res$FDR <- stats::p.adjust(res$p_value, method = "BH")
 
-  res <- res[res$FDR <= alpha & res$observed > 0 & res$enrichment_fc > 1, ]
+  if(filter){
 
-  res[order(res$enrichment_fc, decreasing = TRUE),]
+    res <- res[res$FDR <= alpha & res$observed > 0 & res$enrichment_fc > 1, ]
+    res[order(res$enrichment_fc, decreasing = TRUE),]
+
+  } else{
+
+    res
+  }
+
 }
 
 

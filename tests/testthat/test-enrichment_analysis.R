@@ -223,3 +223,79 @@ test_that("Genes not in dict properly ignored",{
 
 })
 
+
+
+test_that("filter argument prevents filtering",{
+
+  res <- enrichment_analysis(gene_list, dict_tissue, filter = FALSE)
+
+  expect_equal(
+    res[which.max(res$enrichment_fc),] |>
+      lapply(setNames, nm = NULL),
+
+    list(term_name = "ABplpapp",
+         term_id = "WBbt:0006420",
+         expected = 0.01906973,
+         observed = 1,
+         enrichment_fc = 52.439118,
+         p_value = 0.0001733859,
+         FDR = 0.01284194),
+    tolerance = .00001
+  )
+
+  expect_identical(
+    nrow(res),
+    ncol(dict_tissue) - 1L
+  )
+
+
+  res_backgr <- enrichment_analysis(gene_list,
+                                    dict_tissue,
+                                    background_genes = background_list,
+                                    filter = FALSE)
+
+  expect_equal(
+    res_backgr[which.max(res_backgr$enrichment_fc),] |>
+      lapply(setNames, nm = NULL),
+
+    list(term_name = "AVL",
+         term_id = "WBbt:0003843",
+         expected = 0.04971638,
+         observed = 1,
+         enrichment_fc = 20.11409,
+         p_value = 0,
+         FDR = 0),
+    tolerance = .00001
+  )
+
+
+  expect_identical(
+    nrow(res_backgr),
+    ncol(dict_tissue) - 1L
+  )
+
+  # pheno
+  gene_list_pheno <- intersect(gene_list, dict_pheno$wbid)
+
+  res <- enrichment_analysis(gene_list_pheno,
+                             dict_pheno,
+                             filter = FALSE)
+
+  expect_identical(
+    nrow(res),
+    ncol(dict_pheno) - 1L
+  )
+
+  # GO
+  gene_list_go <- intersect(gene_list, dict_go$wbid)
+  res <- enrichment_analysis(gene_list_go, dict_go, filter = FALSE)
+
+  expect_identical(
+    nrow(res),
+    ncol(dict_go) - 1L
+  )
+
+})
+
+
+

@@ -26,14 +26,13 @@ get_cache_dir <- function(cache_dir){
 }
 
 
-
 download_dictionary <- function(filename, cache_dir){
 
   url_base <- 'http://caltech.wormbase.org/TissueEnrichmentAnalysis/'
 
   url <- paste0(url_base, filename)
 
-  download.file(url,
+  utils::download.file(url,
                 file.path(cache_dir, filename))
 
 }
@@ -71,7 +70,7 @@ download_dictionary <- function(filename, cache_dir){
 #'
 #' If `cache_dir` is a character, it is taken as the path to a directory to use for caching. Otherwise,
 #' if the option `WBenrich_cache_dir` is set, it is used as cache directory. Otherwise,
-#' the cache directory is chosen by `{rappdirs}`.
+#' the cache directory is chosen by `rappdirs`.
 #'
 #' @returns A data.frame containing the dictionary of interest, one row per gene, one column per term
 #'
